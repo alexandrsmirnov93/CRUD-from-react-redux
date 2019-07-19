@@ -83,7 +83,7 @@ class AppEmployees extends Component {
                         )}
                     </tbody>  
                 </table>
-                <button onClick={this.addUser}>Добавить</button>
+                <button onClick={this.addUser}>Добавить (пока не работает)</button>
             </div>
         );
     }
