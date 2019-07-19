@@ -1,3 +1,5 @@
+$mainMargin: 10px;
+
 .none{
   display: none;
 }
@@ -20,14 +22,14 @@
 
 .AppEmployees_Modal_label, .AppEmployees_Modal_submit{
   display: block;
-  margin: 10px 0;
+  margin: $mainMargin 0;
 }
 
 .AppEmployees_Modal_input{
   display: block;
-  margin: 10px 0;
+  margin: $mainMargin 0;
 }
 
 .AppEmployees{
-  margin: 10px;
+  margin: $mainMargin;
 }
