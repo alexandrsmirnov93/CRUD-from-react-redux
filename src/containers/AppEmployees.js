@@ -1,17 +1,19 @@
 import React, { Component } from 'react';
-
 import {bindActionCreators} from 'redux'
 import {connect} from 'react-redux'
-import {addEmployees, getAllEmployees} from '../actions/index.js'
+import {getAllEmployees} from '../actions/index.js'
 import AppAddNewEmployee from './AppAddNewEmployee'
-
+import AppEditEmployee from './AppEditEmployee'
 import empoyeesData from '../files/employees.json';
+
 class AppEmployees extends Component {
     state = {
         allRoles: [],
         checkBoxArchiveFilter: '',
         roleFilter: '',
-        openModal: false
+        openModalAdd: false,
+        openModalEdit: false,
+        dataForEdit: {}
     }
 
     componentDidMount=()=>{
@@ -28,7 +30,13 @@ class AppEmployees extends Component {
     }
 
     addUser=()=>{
-        this.setState({openModal : !this.state.openModal})
+        this.setState({openModalAdd : !this.state.openModalAdd})
+    }
+    changeUser=(e, item)=>{
+        console.log(item)
+        this.setState({dataForEdit : item},()=>{
+            this.setState({openModalEdit : !this.state.openModalEdit})
+        })
     }
     filterData=(item)=>{
         return  (item.role === this.state.roleFilter || this.state.roleFilter === '') &&
@@ -56,10 +64,12 @@ class AppEmployees extends Component {
     render() {
         return (
             <div>
-                <div className={`AppEmployees_Modal ${this.state.openModal ? '' : ' none'}`}> 
-                    <AppAddNewEmployee />
-                </div>
+                { this.state.openModalAdd && <AppAddNewEmployee closeItself={this.addUser}/> }
 
+                {/* <div className={`AppEmployees_Modal ${this.state.openModalAdd ? '' : ' none'}`}> 
+                    <AppAddNewEmployee closeItself={this.addUser}/>
+                </div> */}
+                { this.state.openModalEdit && <AppEditEmployee dataForEdit={this.state.dataForEdit} closeItself={this.changeUser}/> }
 
 
                 <select onChange={this.filterEmployees}>
@@ -69,13 +79,13 @@ class AppEmployees extends Component {
                         </option>
                     )}
                 </select>
-                <input type='checkbox' onChange = {this.changeChekbox}></input>
+                <input type='checkbox' onChange={this.changeChekbox}></input>
                 <button onClick={(e)=>this.sortEmployees(e, 'name')}>Сортировать по имени</button>
                 <button onClick={(e)=>this.sortEmployees(e, 'birthday')}>Сортировать по дате рождения</button>
                 <table>
-                    <tbody>
+                    <tbody >
                         {this.props.employees.filter(this.filterData).map(item=> 
-                            <tr key={item.id}>
+                            <tr key={item.id} onClick={(e)=>this.changeUser(e, item)}>
                                 <td>{item.name}</td>
                                 <td>{item.role}</td>
                                 <td>{item.phone}</td>
@@ -83,14 +93,11 @@ class AppEmployees extends Component {
                         )}
                     </tbody>  
                 </table>
-                <button onClick={this.addUser}>Добавить (пока не работает)</button>
+                <button onClick={this.addUser}>Добавить</button>
             </div>
         );
     }
 }
-
-
-
 
 function mapStateToProps(state){
 	return{
@@ -99,7 +106,7 @@ function mapStateToProps(state){
 }
 
 function matchDispatchToProps(dispatch){
-	return bindActionCreators({addEmployees: addEmployees, getAllEmployees: getAllEmployees}, dispatch)
+	return bindActionCreators({getAllEmployees: getAllEmployees}, dispatch)
 }
 
-export default connect(mapStateToProps, matchDispatchToProps)(AppEmployees) ;
+export default connect(mapStateToProps, matchDispatchToProps)(AppEmployees);

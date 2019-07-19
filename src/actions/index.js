@@ -11,3 +11,10 @@ export const addEmployees = (data)=>{
 		payload: data
 	}
 }
+
+export const editEmployee = (data)=>{
+	return{
+		type: 'EDIT_DATA_EMPLOYEE',
+		payload: data
+	}
+}
