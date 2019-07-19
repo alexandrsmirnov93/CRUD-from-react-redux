@@ -63,7 +63,7 @@ class AppEmployees extends Component {
 
     render() {
         return (
-            <div>
+            <div className='AppEmployees'>
                 { this.state.openModalAdd && <AppAddNewEmployee closeItself={this.addUser}/> }
 
                 {/* <div className={`AppEmployees_Modal ${this.state.openModalAdd ? '' : ' none'}`}> 
