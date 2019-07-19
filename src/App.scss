@@ -22,14 +22,18 @@ $mainMargin: 10px;
 
 .AppEmployees_Modal_label, .AppEmployees_Modal_submit{
   display: block;
-  margin: $mainMargin 0;
+  margin: $mainMargin $mainMargin $mainMargin 0;
 }
 
-.AppEmployees_Modal_input{
+.AppEmployees_Modal_input, .AppEmployees_headerElem{
   display: block;
   margin: $mainMargin 0;
 }
 
 .AppEmployees{
   margin: $mainMargin;
+}
+
+.AppEmployees_headerElemButton{
+  width: 200px;
 }

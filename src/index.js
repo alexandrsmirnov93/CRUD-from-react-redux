@@ -7,6 +7,7 @@ import { Provider } from 'react-redux'
 import * as serviceWorker from './serviceWorker';
 import './index.css';
 import thunk from 'redux-thunk';//На случай, если данные из json будут приходить из сервера
+import 'bootstrap/dist/css/bootstrap.css';
 const store = createStore(rootReducers, applyMiddleware(thunk));
 
 

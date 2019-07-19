@@ -73,16 +73,17 @@ class AppEmployees extends Component {
                 { this.state.openModalEdit && <AppEditEmployee dataForEdit={this.state.dataForEdit} closeItself={this.changeUser}/> }
 
 
-                <select onChange={this.filterEmployees}>
+                <select onChange={this.filterEmployees} className='form-control AppEmployees_headerElem'>
                     {this.state.allRoles.map(item=>
                         <option key={item}>
                             {item}
+
                         </option>
                     )}
                 </select>
-                <input type='checkbox' onChange={this.changeChekbox}></input>
-                <button onClick={(e)=>this.sortEmployees(e, 'name')}>Сортировать по имени</button>
-                <button onClick={(e)=>this.sortEmployees(e, 'birthday')}>Сортировать по дате рождения</button>
+                Архив: <input type='checkbox' onChange={this.changeChekbox}></input>
+                <button className='btn-primary AppEmployees_headerElem AppEmployees_headerElemButton' onClick={(e)=>this.sortEmployees(e, 'name')}>Сортировать по имени</button>
+                <button className='btn-primary AppEmployees_headerElem AppEmployees_headerElemButton' onClick={(e)=>this.sortEmployees(e, 'birthday')}>Сортировать по дате рождения</button>
                 <table>
                     <tbody >
                         {this.props.employees.filter(this.filterData).map(item=> 
@@ -94,7 +95,7 @@ class AppEmployees extends Component {
                         )}
                     </tbody>  
                 </table>
-                <button onClick={this.addUser}>Добавить</button>
+                <button onClick={this.addUser} className='btn btn-primary'>Добавить</button>
             </div>
         );
     }

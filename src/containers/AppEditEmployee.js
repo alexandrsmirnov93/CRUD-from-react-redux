@@ -54,22 +54,22 @@ class AppEditEmployee extends Component {
             <div className="AppEditEmployee">
                 <form onSubmit={this.editEmployee}>
                     <label className='AppEmployees_Modal_label'>Имя</label>
-                    <input required onChange={this.changeName} value={this.state.name} />
+                    <input className='AppEmployees_Modal_input form-control' required onChange={this.changeName} value={this.state.name} />
                     <label className='AppEmployees_Modal_label'>Архив</label>
-                    <input type='checkbox' onChange={this.changeArchive} checked={this.state.archve}/>
+                    <input className='AppEmployees_Modal_input' type='checkbox' onChange={this.changeArchive} checked={this.state.archve}/>
                     <label className='AppEmployees_Modal_label'>Роль</label>
                     {/* <input onChange={this.changeRole} value={this.state.role}/> */}
-                    <select onChange={this.changeRole} value={this.state.role}>
+                    <select required onChange={this.changeRole} value={this.state.role} className='form-control'>
                         {this.state.roles.map(item => <option key={item}>
                             {item}
                         </option>)}
                     </select>
                     <label className='AppEmployees_Modal_label'>Телефон</label>
-                    <input required onChange={this.changePhone} value={this.state.phone} />
+                    <input className='AppEmployees_Modal_input form-control' required onChange={this.changePhone} value={this.state.phone} />
                     <label className='AppEmployees_Modal_label'>Дата рождения (формат дд.мм.ггг)</label>
-                    <input required onChange={this.changeBirthDate} value={this.state.birthday} pattern='^\d{1,2}.\d{1,2}.\d{4}$'/>
-                    <button className='AppEmployees_Modal_submit' type='submit'>Отправить</button>
-                    <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit' type='button'>Отменить</button>
+                    <input className='AppEmployees_Modal_input form-control' required onChange={this.changeBirthDate} value={this.state.birthday} pattern='^\d{1,2}\.\d{1,2}\.\d{4}$'/>
+                    <button className='AppEmployees_Modal_submit btn btn-primary' type='submit'>Отправить</button>
+                    <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit btn btn-danger' type='button'>Отменить</button>
 
                 </form>
             </div>

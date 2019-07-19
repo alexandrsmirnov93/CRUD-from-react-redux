@@ -9,7 +9,8 @@ class AppAddNewEmployee extends Component {
     archive: false,
     role: '',
     phone: '',
-    birthday: ''
+    birthday: '',
+    roles: ['', 'driver', 'waiter', 'cook']
   }
   changeName = (e)=>{
     this.setState({name: e.target.value})
@@ -24,7 +25,7 @@ class AppAddNewEmployee extends Component {
     this.setState({phone: e.target.value})
   }
   changeBirthDate=(e)=>{
-    this.setState({nabirthdayme: e.target.value})
+    this.setState({birthday: e.target.value})
   }
   addEmployee=(e)=>{
 
@@ -53,17 +54,21 @@ class AppAddNewEmployee extends Component {
         <div className="AppAddNewEmployee">
           <form onSubmit={this.addEmployee}>
               <label className='AppEmployees_Modal_label'>Имя</label>
-              <input required className='AppEmployees_Modal_input' onChange={this.changeName}></input>
+              <input required className='AppEmployees_Modal_input form-control' onChange={this.changeName}></input>
               <label className='AppEmployees_Modal_label'>Архив</label>
               <input className='AppEmployees_Modal_input' type='checkbox' onChange={this.changeArchive}></input>
               <label className='AppEmployees_Modal_label'>Роль</label>
-              <input required className='AppEmployees_Modal_input' onChange={this.changeRole}></input>
+              <select required onChange={this.changeRole} value={this.state.role} className='form-control'>
+                        {this.state.roles.map(item => <option key={item}>
+                            {item}
+                        </option>)}
+                    </select>
               <label className='AppEmployees_Modal_label'>Телефон</label>
-              <input required className='AppEmployees_Modal_input' onChange={this.changePhone}></input>
+              <input required className='AppEmployees_Modal_input form-control' onChange={this.changePhone}></input>
               <label className='AppEmployees_Modal_label'>Дата рождения (формат дд.мм.ггг)</label>
-              <input required className='AppEmployees_Modal_input' onChange={this.changeBirthDate} pattern='^\d{1,2}.\d{1,2}.\d{4}$'></input>
-              <button className='AppEmployees_Modal_submit' type='submit'>Отправить</button>
-              <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit' type='button'>Отменить</button>
+              <input required className='AppEmployees_Modal_input form-control' onChange={this.changeBirthDate} pattern='^\d{1,2}\.\d{1,2}\.\d{4}$'></input>
+              <button className='AppEmployees_Modal_submit btn btn-primary' type='submit'>Отправить</button>
+              <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit btn btn-danger' type='button'>Отменить</button>
           </form>
         </div>
       </div>
