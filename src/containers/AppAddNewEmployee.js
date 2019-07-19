@@ -27,21 +27,24 @@ class AppAddNewEmployee extends Component {
     this.setState({nabirthdayme: e.target.value})
   }
   addEmployee=(e)=>{
+
     e.preventDefault()
     let maxId = 0
     this.props.employees.forEach(item => {
       if (item.id > maxId) maxId = item.id 
     })
-    this.props.addEmployees({
+    let newEmployee = {
       
-        id: ++maxId,
-        name: this.state.name,
-        isArchive: this.state.archive,
-        role: this.state.role,
-        phone: this.state.phone,
-        birthday: this.state.birthday
-      
-    })
+      id: ++maxId,
+      name: this.state.name,
+      isArchive: this.state.archive,
+      role: this.state.role,
+      phone: this.state.phone,
+      birthday: this.state.birthday
+    
+  }
+    this.props.addEmployees(newEmployee)
+    console.log('Add user', newEmployee)
     this.props.closeItself()
   }
   render() {
@@ -57,8 +60,8 @@ class AppAddNewEmployee extends Component {
               <input required className='AppEmployees_Modal_input' onChange={this.changeRole}></input>
               <label className='AppEmployees_Modal_label'>Телефон</label>
               <input required className='AppEmployees_Modal_input' onChange={this.changePhone}></input>
-              <label className='AppEmployees_Modal_label'>Дата рождения</label>
-              <input required className='AppEmployees_Modal_input' onChange={this.changeBirthDate}></input>
+              <label className='AppEmployees_Modal_label'>Дата рождения (формат дд.мм.ггг)</label>
+              <input required className='AppEmployees_Modal_input' onChange={this.changeBirthDate} pattern='^\d{1,2}.\d{1,2}.\d{4}$'></input>
               <button className='AppEmployees_Modal_submit' type='submit'>Отправить</button>
               <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit' type='button'>Отменить</button>
           </form>

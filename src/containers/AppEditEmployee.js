@@ -13,9 +13,7 @@ class AppEditEmployee extends Component {
     birthday: this.props.dataForEdit.birthday,
     roles: ['driver', 'waiter', 'cook']
   }
-  componentDidMount=()=>{
-      console.log('dd1',this.props.dataForEdit)
-  }
+
   changeName = (e)=>{
     this.setState({name: e.target.value})
   }
@@ -46,6 +44,7 @@ class AppEditEmployee extends Component {
     let employees = this.props.employees.slice()
     let index = employees.findIndex(item => item.id === changed.id)
     employees[index] = changed
+    console.log('Chenged user', changed)
     this.props.editEmployee(employees)
     this.props.closeItself()
   }
@@ -67,8 +66,8 @@ class AppEditEmployee extends Component {
                     </select>
                     <label className='AppEmployees_Modal_label'>Телефон</label>
                     <input required onChange={this.changePhone} value={this.state.phone} />
-                    <label className='AppEmployees_Modal_label'>Дата рождения</label>
-                    <input required onChange={this.changeBirthDate} value={this.state.birthday}/>
+                    <label className='AppEmployees_Modal_label'>Дата рождения (формат дд.мм.ггг)</label>
+                    <input required onChange={this.changeBirthDate} value={this.state.birthday} pattern='^\d{1,2}.\d{1,2}.\d{4}$'/>
                     <button className='AppEmployees_Modal_submit' type='submit'>Отправить</button>
                     <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit' type='button'>Отменить</button>
 

@@ -27,6 +27,7 @@ class AppEmployees extends Component {
         allRoles = Object.keys(allRoles)
         allRoles.unshift('')
         this.setState({allRoles: allRoles})
+        console.log('get all users', empoyeesData)
     }
 
     addUser=()=>{
