@@ -55,7 +55,7 @@ class AppEditEmployee extends Component {
             <div className="AppEditEmployee">
                 <form onSubmit={this.editEmployee}>
                     <label className='AppEmployees_Modal_label'>Имя</label>
-                    <input onChange={this.changeName} value={this.state.name} />
+                    <input required onChange={this.changeName} value={this.state.name} />
                     <label className='AppEmployees_Modal_label'>Архив</label>
                     <input type='checkbox' onChange={this.changeArchive} checked={this.state.archve}/>
                     <label className='AppEmployees_Modal_label'>Роль</label>
@@ -66,9 +66,9 @@ class AppEditEmployee extends Component {
                         </option>)}
                     </select>
                     <label className='AppEmployees_Modal_label'>Телефон</label>
-                    <input onChange={this.changePhone} value={this.state.phone} />
+                    <input required onChange={this.changePhone} value={this.state.phone} />
                     <label className='AppEmployees_Modal_label'>Дата рождения</label>
-                    <input onChange={this.changeBirthDate} value={this.state.birthday}/>
+                    <input required onChange={this.changeBirthDate} value={this.state.birthday}/>
                     <button className='AppEmployees_Modal_submit' type='submit'>Отправить</button>
                     <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit' type='button'>Отменить</button>
 

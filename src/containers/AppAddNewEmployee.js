@@ -50,15 +50,15 @@ class AppAddNewEmployee extends Component {
         <div className="AppAddNewEmployee">
           <form onSubmit={this.addEmployee}>
               <label className='AppEmployees_Modal_label'>Имя</label>
-              <input className='AppEmployees_Modal_input' onChange={this.changeName}></input>
+              <input required className='AppEmployees_Modal_input' onChange={this.changeName}></input>
               <label className='AppEmployees_Modal_label'>Архив</label>
               <input className='AppEmployees_Modal_input' type='checkbox' onChange={this.changeArchive}></input>
               <label className='AppEmployees_Modal_label'>Роль</label>
-              <input className='AppEmployees_Modal_input' onChange={this.changeRole}></input>
+              <input required className='AppEmployees_Modal_input' onChange={this.changeRole}></input>
               <label className='AppEmployees_Modal_label'>Телефон</label>
-              <input className='AppEmployees_Modal_input' onChange={this.changePhone}></input>
+              <input required className='AppEmployees_Modal_input' onChange={this.changePhone}></input>
               <label className='AppEmployees_Modal_label'>Дата рождения</label>
-              <input className='AppEmployees_Modal_input' onChange={this.changeBirthDate}></input>
+              <input required className='AppEmployees_Modal_input' onChange={this.changeBirthDate}></input>
               <button className='AppEmployees_Modal_submit' type='submit'>Отправить</button>
               <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit' type='button'>Отменить</button>
           </form>
