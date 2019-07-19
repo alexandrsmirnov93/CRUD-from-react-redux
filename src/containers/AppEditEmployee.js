@@ -54,22 +54,24 @@ class AppEditEmployee extends Component {
         <div className='AppEmployees_Modal'>
             <div className="AppEditEmployee">
                 <form onSubmit={this.editEmployee}>
-                    Имя
+                    <label className='AppEmployees_Modal_label'>Имя</label>
                     <input onChange={this.changeName} value={this.state.name} />
-                    Архив
+                    <label className='AppEmployees_Modal_label'>Архив</label>
                     <input type='checkbox' onChange={this.changeArchive} checked={this.state.archve}/>
-                    Роль
+                    <label className='AppEmployees_Modal_label'>Роль</label>
                     {/* <input onChange={this.changeRole} value={this.state.role}/> */}
                     <select onChange={this.changeRole} value={this.state.role}>
                         {this.state.roles.map(item => <option key={item}>
                             {item}
                         </option>)}
                     </select>
-                    Телефон
+                    <label className='AppEmployees_Modal_label'>Телефон</label>
                     <input onChange={this.changePhone} value={this.state.phone} />
-                    Дата рождения
+                    <label className='AppEmployees_Modal_label'>Дата рождения</label>
                     <input onChange={this.changeBirthDate} value={this.state.birthday}/>
-                    <button type='submit'>Отправить</button>
+                    <button className='AppEmployees_Modal_submit' type='submit'>Отправить</button>
+                    <button onClick={this.props.closeItself} className='AppEmployees_Modal_submit' type='button'>Отменить</button>
+
                 </form>
             </div>
         </div>
